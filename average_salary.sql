@@ -49,3 +49,13 @@ INSERT INTO staff(name, salary, department_id) VALUES("Garry", 60000, 2);
 
 INSERT INTO staff(name, salary, department_id) VALUES("Henry", 40000, 7);
 INSERT INTO staff(name, salary, department_id) VALUES("Ivan", 60000, 7);
+
+SELECT avg(salary),departments.name FROM staff JOIN departments ON department_id=departments.id GROUP BY departments.name;
+
+SELECT avg(salary),departments.id,departments.name FROM staff JOIN departments ON department_id=departments.id GROUP BY departments.id;
+
+SELECT salary,staff.name,departments.name,departments.id,departments.company_id FROM staff JOIN departments ON department_id=departments.id JOIN companies ON departments.company_id=companies.id;
+
+SELECT avg(salary),companies.name FROM staff JOIN departments ON department_id=departments.id JOIN companies ON departments.company_id=companies.id GROUP BY companies.name;
+
+SELECT avg(salary),companies.name FROM staff JOIN departments ON department_id=departments.id JOIN companies ON departments.company_id=companies.id GROUP BY companies.name ORDER BY avg(salary) DESC;
